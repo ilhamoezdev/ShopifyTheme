@@ -1,81 +1,66 @@
-<div class="relative overflow-hidden luxury-bg min-h-screen flex items-center">
-  <!-- Parallax Background -->
-  <div class="absolute inset-0 parallax-element opacity-20">
-    <div class="baklava-pattern absolute inset-0"></div>
-  </div>
-
-  <!-- Floating Elements -->
-  <div class="absolute top-20 left-20 w-32 h-32 bg-accent/10 rounded-full animate-float"></div>
-  <div class="absolute top-40 right-32 w-24 h-24 bg-gold-light/20 rounded-full animate-float" style="animation-delay: 2s;"></div>
-  <div class="absolute bottom-32 left-40 w-20 h-20 bg-accent/15 rounded-full animate-float" style="animation-delay: 4s;"></div>
-
-  <div class="container-custom relative z-10 section-padding">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-      <!-- Content -->
-      <div class="text-cream space-y-12 animate-fade-in">
-        <div class="space-y-6">
-          <div class="inline-block px-6 py-2 bg-accent/20 rounded-full text-accent font-semibold text-sm uppercase tracking-widest">
-            Premium Artisan Baklava
-          </div>
+<div class="hero-section">
+  <div class="container">
+    <div class="row align-items-center min-vh-100">
+      <div class="col-lg-6 hero-content animate-fade-in-up">
+        <div class="mb-4">
+          <span class="badge bg-accent text-dark px-4 py-2 rounded-pill mb-3">Premium Artisan Baklava</span>
           {% if section.settings.heading != blank %}
-            <h1 class="font-premium leading-tight text-glow">
+            <h1 class="display-1 fw-bold mb-4">
               {{ section.settings.heading }}
             </h1>
           {% endif %}
         </div>
 
         {% if section.settings.text != blank %}
-          <p class="text-xl md:text-2xl text-cream/90 leading-relaxed max-w-xl">
+          <p class="lead mb-4">
             {{ section.settings.text }}
           </p>
         {% endif %}
 
-        <div class="flex flex-col sm:flex-row gap-6">
+        <div class="d-flex flex-column flex-sm-row gap-3 mb-5">
           {% if section.settings.button_label != blank and section.settings.button_link != blank %}
-            <a href="{{ section.settings.button_link }}" class="btn btn-gold animate-bounce-subtle">
+            <a href="{{ section.settings.button_link }}" class="btn btn-accent btn-lg animate-glow">
               {{ section.settings.button_label }}
             </a>
           {% endif %}
           {% if section.settings.secondary_button_label != blank and section.settings.secondary_button_link != blank %}
-            <a href="{{ section.settings.secondary_button_link }}" class="btn btn-secondary">
+            <a href="{{ section.settings.secondary_button_link }}" class="btn btn-outline-light btn-lg">
               {{ section.settings.secondary_button_label }}
             </a>
           {% endif %}
         </div>
 
         <!-- Trust Indicators -->
-        <div class="flex flex-wrap items-center gap-8 pt-8">
-          <div class="flex items-center space-x-3">
-            <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center">
-              <svg class="w-6 h-6 text-luxury-dark" fill="currentColor" viewBox="0 0 24 24">
+        <div class="d-flex flex-wrap gap-4">
+          <div class="d-flex align-items-center gap-3">
+            <div class="bg-accent rounded-circle d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" class="text-dark">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
               </svg>
             </div>
             <div>
-              <div class="font-semibold text-cream">5.0 Rating</div>
-              <div class="text-cream/70 text-sm">500+ Reviews</div>
+              <div class="fw-semibold text-white">5.0 Rating</div>
+              <div class="text-white-50 small">500+ Reviews</div>
             </div>
           </div>
-          <div class="flex items-center space-x-3">
-            <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center">
-              <svg class="w-6 h-6 text-luxury-dark" fill="currentColor" viewBox="0 0 24 24">
+          <div class="d-flex align-items-center gap-3">
+            <div class="bg-accent rounded-circle d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" class="text-dark">
                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
             </div>
             <div>
-              <div class="font-semibold text-cream">Premium Quality</div>
-              <div class="text-cream/70 text-sm">Handcrafted Daily</div>
+              <div class="fw-semibold text-white">Premium Quality</div>
+              <div class="text-white-50 small">Handcrafted Daily</div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Premium Product Showcase -->
-      <div class="relative animate-slide-up">
-        <!-- Main Product -->
-        <div class="relative mx-auto max-w-md">
-          <div class="relative rounded-3xl overflow-hidden shadow-gold transform hover:scale-105 transition-all duration-700">
-            {% if section.settings.image != blank %}
+      <div class="col-lg-6 animate-fade-in-up" style="animation-delay: 0.2s;">
+        <div class="position-relative">
+          {% if section.settings.image != blank %}
+            <div class="rounded-3 overflow-hidden shadow-gold">
               <img
                 srcset="{%- if section.settings.image.width >= 375 -%}{{ section.settings.image | image_url: width: 375 }} 375w,{%- endif -%}
                         {%- if section.settings.image.width >= 750 -%}{{ section.settings.image | image_url: width: 750 }} 750w,{%- endif -%}
@@ -88,58 +73,57 @@
                 loading="eager"
                 width="{{ section.settings.image.width }}"
                 height="{{ section.settings.image.height }}"
-                class="w-full h-auto"
+                class="img-fluid rounded-3"
               >
-            {% else %}
-              <!-- Placeholder Baklava Display -->
-              <div class="w-full aspect-square bg-gradient-to-br from-amber-100 to-yellow-200 flex items-center justify-center">
-                <div class="text-center space-y-4">
-                  <div class="w-24 h-24 mx-auto bg-gradient-to-br from-accent to-gold-light rounded-full flex items-center justify-center shadow-lg">
-                    <svg class="w-12 h-12 text-luxury-dark" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                  </div>
-                  <div class="text-luxury-dark font-premium text-2xl">Premium Baklava</div>
+            </div>
+          {% else %}
+            <div class="bg-gradient-to-br from-amber-100 to-yellow-200 rounded-3 d-flex align-items-center justify-content-center" style="aspect-ratio: 1; min-height: 400px;">
+              <div class="text-center">
+                <div class="bg-accent rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3 shadow-gold" style="width: 96px; height: 96px;">
+                  <svg width="48" height="48" fill="currentColor" viewBox="0 0 24 24" class="text-dark">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
                 </div>
+                <div class="fw-bold text-dark fs-4">Premium Baklava</div>
               </div>
-            {% endif %}
-          </div>
+            </div>
+          {% endif %}
 
           <!-- Floating Price Badge -->
-          <div class="absolute -top-6 -right-6 bg-accent text-luxury-dark px-6 py-3 rounded-2xl font-bold text-xl shadow-gold animate-glow">
+          <div class="position-absolute top-0 end-0 bg-accent text-dark px-4 py-2 rounded-3 fw-bold fs-5 shadow-gold animate-glow" style="transform: translate(20px, -20px);">
             $49.99
           </div>
 
           <!-- Decorative Elements -->
-          <div class="absolute -top-16 -left-16 w-32 h-32 bg-accent/10 rounded-full blur-2xl animate-float"></div>
-          <div class="absolute -bottom-16 -right-16 w-24 h-24 bg-gold-light/20 rounded-full blur-xl animate-float" style="animation-delay: 3s;"></div>
+          <div class="position-absolute top-0 start-0 bg-accent opacity-10 rounded-circle animate-float" style="width: 128px; height: 128px; transform: translate(-64px, -64px);"></div>
+          <div class="position-absolute bottom-0 end-0 bg-accent-light opacity-20 rounded-circle animate-float" style="width: 96px; height: 96px; transform: translate(48px, 48px); animation-delay: 3s;"></div>
         </div>
 
         <!-- Product Highlights -->
-        <div class="flex justify-center mt-12 space-x-8">
+        <div class="d-flex justify-content-center gap-4 mt-4">
           <div class="text-center">
-            <div class="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-3">
-              <svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
+            <div class="bg-accent opacity-20 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 64px; height: 64px;">
+              <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24" class="text-accent">
                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
               </svg>
             </div>
-            <div class="text-cream/80 text-sm font-semibold">Premium</div>
+            <div class="text-white-50 small fw-semibold">Premium</div>
           </div>
           <div class="text-center">
-            <div class="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-3">
-              <svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
+            <div class="bg-accent opacity-20 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 64px; height: 64px;">
+              <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24" class="text-accent">
                 <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
             </div>
-            <div class="text-cream/80 text-sm font-semibold">Authentic</div>
+            <div class="text-white-50 small fw-semibold">Authentic</div>
           </div>
           <div class="text-center">
-            <div class="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mx-auto mb-3">
-              <svg class="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
+            <div class="bg-accent opacity-20 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-2" style="width: 64px; height: 64px;">
+              <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24" class="text-accent">
                 <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
               </svg>
             </div>
-            <div class="text-cream/80 text-sm font-semibold">Artisan</div>
+            <div class="text-white-50 small fw-semibold">Artisan</div>
           </div>
         </div>
       </div>
@@ -147,9 +131,9 @@
   </div>
 
   <!-- Scroll Indicator -->
-  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-subtle">
-    <div class="w-6 h-10 border-2 border-cream/30 rounded-full flex justify-center">
-      <div class="w-1 h-3 bg-cream/50 rounded-full mt-2 animate-pulse"></div>
+  <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4 animate-float">
+    <div class="border border-white opacity-30 rounded-pill d-flex justify-content-center" style="width: 24px; height: 40px;">
+      <div class="bg-white opacity-50 rounded-pill mt-2" style="width: 4px; height: 8px;"></div>
     </div>
   </div>
 </div>
@@ -187,7 +171,7 @@
       "type": "text",
       "id": "secondary_button_label",
       "label": "Secondary Button Label",
-      "default": "Our Story"
+      "default": "Our Heritage"
     },
     {
       "type": "url",
@@ -208,7 +192,7 @@
         "heading": "Indulge in\nPremium Baklava\nExcellence",
         "text": "Experience the finest handcrafted baklava, made with traditional recipes passed down through generations. Each piece tells a story of Ottoman heritage and culinary perfection.",
         "button_label": "Shop Premium Baklava",
-        "secondary_button_label": "Our Story"
+        "secondary_button_label": "Our Heritage"
       }
     }
   ]

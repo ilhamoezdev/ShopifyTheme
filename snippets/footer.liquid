@@ -1,33 +1,34 @@
-<footer class="bg-gray-900 text-white mt-20" role="contentinfo">
-  <div class="container-custom py-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+<footer class="footer mt-5">
+  <div class="container">
+    <div class="row g-5 mb-5">
       <!-- Brand -->
-      <div>
-        <h3 class="text-2xl font-bold mb-4">{{ shop.name }}</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">{{ settings.footer_text }}</p>
+      <div class="col-md-6 col-lg-3">
+        <h3 class="footer-title">{{ shop.name }}</h3>
+        <p class="text-white-50">{{ settings.footer_text }}</p>
       </div>
 
       <!-- Quick Links -->
-      <div>
-        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-        <ul class="space-y-2">
+      <div class="col-md-6 col-lg-3">
+        <h4 class="footer-title">Quick Links</h4>
+        <ul class="list-unstyled">
           {% for link in linklists.footer.links %}
-            <li>
-              <a href="{{ link.url }}" class="text-gray-400 hover:text-white transition-colors text-sm">
-                {{ link.title }}
-              </a>
+            <li class="mb-2">
+              <a href="{{ link.url }}" class="footer-link">{{ link.title }}</a>
             </li>
           {% endfor %}
         </ul>
       </div>
 
       <!-- Contact -->
-      <div>
-        <h4 class="text-lg font-semibold mb-4">Contact</h4>
-        <ul class="space-y-2">
+      <div class="col-md-6 col-lg-3">
+        <h4 class="footer-title">Contact</h4>
+        <ul class="list-unstyled">
           {% if shop.email != blank %}
-            <li>
-              <a href="mailto:{{ shop.email }}" class="text-gray-400 hover:text-white transition-colors text-sm">
+            <li class="mb-2">
+              <a href="mailto:{{ shop.email }}" class="footer-link d-flex align-items-center gap-2">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
                 {{ shop.email }}
               </a>
             </li>
@@ -36,28 +37,29 @@
       </div>
 
       <!-- Newsletter -->
-      <div>
-        <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
-        <p class="text-gray-400 text-sm mb-4">Stay updated with our latest offers</p>
-        <form class="flex flex-col space-y-2">
+      <div class="col-md-6 col-lg-3">
+        <h4 class="footer-title">Newsletter</h4>
+        <p class="text-white-50 small mb-3">Stay updated with our latest offers</p>
+        <form class="d-flex flex-column gap-2">
           <input
             type="email"
             placeholder="Your email"
-            class="px-4 py-2 rounded-lg bg-gray-800 text-white placeholder-gray-500 border border-gray-700 focus:outline-none focus:border-accent"
+            class="form-control bg-dark border-secondary text-white"
+            style="border-radius: 0.75rem;"
           />
-          <button type="submit" class="btn btn-accent text-sm">Subscribe</button>
+          <button type="submit" class="btn btn-accent">Subscribe</button>
         </form>
       </div>
     </div>
 
-    <div class="border-t border-gray-800 pt-8">
-      <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-        <p class="text-gray-400 text-sm">
+    <div class="border-top border-secondary pt-4">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+        <p class="text-white-50 small mb-0">
           &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.
         </p>
-        <div class="flex space-x-6">
-          <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy</a>
-          <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Terms</a>
+        <div class="d-flex gap-4">
+          <a href="#" class="footer-link small">Privacy</a>
+          <a href="#" class="footer-link small">Terms</a>
         </div>
       </div>
     </div>

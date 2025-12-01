@@ -1,73 +1,63 @@
-<header class="fixed top-0 left-0 right-0 z-50 glass-effect backdrop-blur-xl border-b border-gold/20 transition-all duration-500" role="banner">
-  <div class="container-custom">
-    <div class="flex items-center justify-between h-24">
-      <!-- Logo -->
-      <div class="flex-shrink-0">
-        <a href="{{ routes.root_url }}" class="flex items-center space-x-3 group">
-          <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-gold group-hover:animate-glow transition-all duration-500">
-            <svg class="w-7 h-7 text-luxury-dark" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-            </svg>
-          </div>
-          <div>
-            {% if settings.header_logo_text != blank %}
-              <span class="text-2xl md:text-3xl font-premium font-bold text-luxury-dark group-hover:text-accent transition-colors">
-                {{ settings.header_logo_text }}
-              </span>
-            {% else %}
-              <span class="text-2xl md:text-3xl font-premium font-bold text-luxury-dark group-hover:text-accent transition-colors">
-                Premium Baklava
-              </span>
-            {% endif %}
-            <div class="text-xs text-accent font-semibold uppercase tracking-widest">Artisan Excellence</div>
-          </div>
-        </a>
+<nav class="navbar navbar-expand-lg fixed-top glass-effect" role="banner">
+  <div class="container">
+    <a class="navbar-brand" href="{{ routes.root_url }}">
+      <div class="logo-icon">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
       </div>
+      <div>
+        {% if settings.header_logo_text != blank %}
+          <span>{{ settings.header_logo_text }}</span>
+        {% else %}
+          <span>Premium Baklava</span>
+        {% endif %}
+        <div class="text-accent" style="font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">Artisan Excellence</div>
+      </div>
+    </a>
 
-      <!-- Navigation -->
-      <nav class="hidden lg:flex items-center space-x-10" role="navigation" aria-label="Main">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
         {% for link in linklists.main-menu.links %}
-          <a href="{{ link.url }}" class="font-premium text-luxury-dark hover:text-accent font-medium transition-all duration-300 relative group py-2">
-            {{ link.title }}
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
-          </a>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ link.url }}">{{ link.title }}</a>
+          </li>
         {% endfor %}
-      </nav>
 
-      <!-- Actions -->
-      <div class="flex items-center space-x-6">
         {% if settings.show_search %}
-          <a href="{{ routes.search_url }}" class="p-3 text-luxury-dark hover:text-accent transition-all duration-300 hover:bg-accent/10 rounded-full" aria-label="Search">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </a>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ routes.search_url }}" aria-label="Search">
+              <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </a>
+          </li>
         {% endif %}
 
-        <a href="{{ routes.cart_url }}" class="cart-link relative p-3 text-luxury-dark hover:text-accent transition-all duration-300 hover:bg-accent/10 rounded-full" aria-label="Cart">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
-        </a>
-
-        <!-- Mobile Menu Button -->
-        <button class="lg:hidden p-3 text-luxury-dark hover:text-accent transition-all duration-300 hover:bg-accent/10 rounded-full" aria-label="Menu" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden lg:hidden pb-6 border-t border-gold/20 mt-6">
-      <nav class="flex flex-col space-y-6 pt-6">
-        {% for link in linklists.main-menu.links %}
-          <a href="{{ link.url }}" class="font-premium text-luxury-dark hover:text-accent font-medium transition-all duration-300 text-lg">
-            {{ link.title }}
+        <li class="nav-item">
+          <a class="nav-link position-relative cart-link" href="{{ routes.cart_url }}" aria-label="Cart">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-accent text-dark" data-cart-count>0</span>
           </a>
-        {% endfor %}
-      </nav>
+        </li>
+      </ul>
     </div>
   </div>
-</header>
+</nav>
+
+<style>
+.navbar-toggler {
+  border: none;
+  padding: 0.25rem 0.5rem;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+</style>
