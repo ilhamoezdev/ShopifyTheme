@@ -1,7 +1,7 @@
 {
   "name": "premium-baklava-theme",
   "version": "1.0.0",
-  "description": "Premium High-End Baklava Theme with Modern CSS and React",
+  "description": "Premium High-End Baklava Theme with Bootstrap 5 and React",
   "scripts": {
     "build": "sass assets/styles/main.scss assets/base.css --style=compressed",
     "watch": "sass --watch assets/styles/main.scss assets/base.css",
@@ -20,6 +20,8 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "bootstrap": "^5.3.3",
+    "@popperjs/core": "^2.11.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
