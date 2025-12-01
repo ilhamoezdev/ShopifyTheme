@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    @apply h-full;
+    font-size: calc(var(--font-body-scale, 1) * 62.5%);
+  }
+
+  body {
+    @apply min-h-screen font-body text-gray-900 antialiased;
+    font-size: 1.5rem;
+    letter-spacing: 0.06rem;
+    line-height: calc(1 + 0.8 / var(--font-body-scale, 1));
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold m-0;
+    letter-spacing: 0.06rem;
+    line-height: calc(1 + 0.2 / var(--font-body-scale, 1));
+  }
+
+  h1 {
+    @apply text-5xl md:text-6xl;
+  }
+
+  h2 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h3 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h4 {
+    @apply text-2xl;
+  }
+
+  h5 {
+    @apply text-xl;
+  }
+
+  h6 {
+    @apply text-lg;
+  }
+
+  a {
+    @apply transition-colors duration-300;
+  }
+
+  button:focus-visible,
+  a:focus-visible {
+    @apply outline-2 outline-offset-2;
+    outline-color: var(--color-accent);
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-8 py-4 text-base font-semibold uppercase tracking-wider rounded-lg transition-all duration-300 cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply bg-gray-900 text-white hover:bg-gray-800 hover:-translate-y-0.5 hover:shadow-xl;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-gray-900 border-2 border-gray-900 hover:bg-gray-900 hover:text-white;
+  }
+
+  .btn-accent {
+    @apply bg-accent text-white hover:-translate-y-0.5 hover:shadow-xl;
+  }
+  
+  .btn-accent:hover {
+    opacity: 0.9;
+  }
+
+  .container-custom {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden;
+  }
+
+  .product-card {
+    @apply card cursor-pointer;
+  }
+
+  .product-card:hover {
+    @apply -translate-y-2;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .gradient-bg {
+    @apply bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600;
+  }
+
+  .glass-effect {
+    @apply bg-white/95 backdrop-blur-lg;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+

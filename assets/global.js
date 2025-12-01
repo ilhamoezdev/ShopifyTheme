@@ -5,6 +5,12 @@ function updateCartCount() {
   fetch(window.routes.cart_url + '.js')
     .then(response => response.json())
     .then(data => {
+      // Update React cart count if available
+      if (window.updateCartCount) {
+        window.updateCartCount();
+      }
+      
+      // Fallback for non-React elements
       const cartCountElements = document.querySelectorAll('[data-cart-count]');
       cartCountElements.forEach(element => {
         element.textContent = data.item_count;
@@ -30,6 +36,7 @@ document.addEventListener('submit', function(e) {
     const originalText = submitButton.textContent;
     
     submitButton.disabled = true;
+    submitButton.classList.add('opacity-75', 'cursor-not-allowed');
     submitButton.textContent = 'Adding...';
     
     const formData = new FormData(form);
@@ -43,12 +50,15 @@ document.addEventListener('submit', function(e) {
       if (data.error) {
         alert(data.description || 'There was an error adding the product to your cart.');
         submitButton.disabled = false;
+        submitButton.classList.remove('opacity-75', 'cursor-not-allowed');
         submitButton.textContent = originalText;
       } else {
         updateCartCount();
-        submitButton.textContent = 'Added!';
+        submitButton.textContent = '✓ Added!';
+        submitButton.classList.add('bg-green-500');
         setTimeout(() => {
           submitButton.disabled = false;
+          submitButton.classList.remove('opacity-75', 'cursor-not-allowed', 'bg-green-500');
           submitButton.textContent = originalText;
         }, 2000);
       }
@@ -57,6 +67,7 @@ document.addEventListener('submit', function(e) {
       console.error('Error:', error);
       alert('There was an error adding the product to your cart.');
       submitButton.disabled = false;
+      submitButton.classList.remove('opacity-75', 'cursor-not-allowed');
       submitButton.textContent = originalText;
     });
   }
@@ -66,20 +77,26 @@ document.addEventListener('submit', function(e) {
 document.addEventListener('click', function(e) {
   if (e.target.closest('.product__media-thumbnail')) {
     const thumbnail = e.target.closest('.product__media-thumbnail');
-    const mediaId = thumbnail.dataset.mediaId;
-    const mainImage = document.getElementById('ProductImage-' + thumbnail.closest('.product').dataset.sectionId);
+    const mainImage = document.getElementById('ProductImage-' + thumbnail.closest('.section').dataset.sectionId);
     
     if (mainImage) {
       // Remove active class from all thumbnails
       document.querySelectorAll('.product__media-thumbnail').forEach(thumb => {
-        thumb.classList.remove('active');
+        thumb.classList.remove('border-gray-900');
+        thumb.classList.add('border-transparent');
       });
       
       // Add active class to clicked thumbnail
-      thumbnail.classList.add('active');
+      thumbnail.classList.remove('border-transparent');
+      thumbnail.classList.add('border-gray-900');
       
-      // Update main image (simplified - in production, you'd fetch the correct image)
-      // This is a placeholder - you'd need to implement proper image switching
+      // Update main image
+      const thumbnailImg = thumbnail.querySelector('img');
+      if (thumbnailImg) {
+        mainImage.srcset = thumbnailImg.srcset || thumbnailImg.src;
+        mainImage.src = thumbnailImg.src;
+        mainImage.alt = thumbnailImg.alt;
+      }
     }
   }
 });
@@ -103,3 +120,14 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+// Mobile menu toggle
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.querySelector('[aria-label="Menu"]');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+});

@@ -24,3 +24,6 @@ build/
 .env
 .env.local
 
+# Compiled CSS (will be generated from input.css)
+# Keep base.css in git for Shopify, but ignore if you want to build locally
+# assets/base.css

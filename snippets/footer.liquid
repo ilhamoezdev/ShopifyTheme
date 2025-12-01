@@ -1,112 +1,65 @@
-<footer class="footer" role="contentinfo">
-  <div class="container">
-    <div class="footer__content">
-      <div class="footer__section">
-        <h3 class="footer__title">{{ shop.name }}</h3>
-        <p class="footer__text">{{ settings.footer_text }}</p>
+<footer class="bg-gray-900 text-white mt-20" role="contentinfo">
+  <div class="container-custom py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      <!-- Brand -->
+      <div>
+        <h3 class="text-2xl font-bold mb-4">{{ shop.name }}</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">{{ settings.footer_text }}</p>
       </div>
 
-      <div class="footer__section">
-        <h4 class="footer__heading">Quick Links</h4>
-        <ul class="footer__links">
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2">
           {% for link in linklists.footer.links %}
             <li>
-              <a href="{{ link.url }}" class="footer__link">{{ link.title }}</a>
+              <a href="{{ link.url }}" class="text-gray-400 hover:text-white transition-colors text-sm">
+                {{ link.title }}
+              </a>
             </li>
           {% endfor %}
         </ul>
       </div>
 
-      <div class="footer__section">
-        <h4 class="footer__heading">Contact</h4>
-        <p class="footer__text">
+      <!-- Contact -->
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Contact</h4>
+        <ul class="space-y-2">
           {% if shop.email != blank %}
-            <a href="mailto:{{ shop.email }}" class="footer__link">{{ shop.email }}</a>
+            <li>
+              <a href="mailto:{{ shop.email }}" class="text-gray-400 hover:text-white transition-colors text-sm">
+                {{ shop.email }}
+              </a>
+            </li>
           {% endif %}
-        </p>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+        <p class="text-gray-400 text-sm mb-4">Stay updated with our latest offers</p>
+        <form class="flex flex-col space-y-2">
+          <input
+            type="email"
+            placeholder="Your email"
+            class="px-4 py-2 rounded-lg bg-gray-800 text-white placeholder-gray-500 border border-gray-700 focus:outline-none focus:border-accent"
+          />
+          <button type="submit" class="btn btn-accent text-sm">Subscribe</button>
+        </form>
       </div>
     </div>
 
-    <div class="footer__bottom">
-      <p class="footer__copyright">
-        &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.
-      </p>
+    <div class="border-t border-gray-800 pt-8">
+      <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+        <p class="text-gray-400 text-sm">
+          &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.
+        </p>
+        <div class="flex space-x-6">
+          <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Privacy</a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm">Terms</a>
+        </div>
+      </div>
     </div>
   </div>
 </footer>
-
-<style>
-  .footer {
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(10px);
-    color: rgba(255, 255, 255, 0.9);
-    padding: var(--spacing-2xl) 0 var(--spacing-lg);
-    margin-top: var(--spacing-2xl);
-  }
-
-  .footer__content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--spacing-xl);
-    margin-bottom: var(--spacing-xl);
-  }
-
-  .footer__title {
-    font-size: 2.4rem;
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-secondary);
-  }
-
-  .footer__heading {
-    font-size: 1.8rem;
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-secondary);
-  }
-
-  .footer__text {
-    font-size: 1.4rem;
-    line-height: 1.6;
-    margin: 0;
-  }
-
-  .footer__links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .footer__links li {
-    margin-bottom: var(--spacing-xs);
-  }
-
-  .footer__link {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    font-size: 1.4rem;
-    transition: color var(--transition-base);
-  }
-
-  .footer__link:hover {
-    color: var(--color-secondary);
-  }
-
-  .footer__bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    padding-top: var(--spacing-lg);
-    text-align: center;
-  }
-
-  .footer__copyright {
-    font-size: 1.4rem;
-    margin: 0;
-    color: rgba(255, 255, 255, 0.7);
-  }
-
-  @media screen and (max-width: 749px) {
-    .footer__content {
-      grid-template-columns: 1fr;
-      gap: var(--spacing-lg);
-    }
-  }
-</style>
-
