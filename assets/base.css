@@ -1,10 +1,9 @@
-/* Error: There is no module with the namespace "color".
+/* Error: Can't find stylesheet to import.
  *     ,
- * 116 |     background: color.adjust(map-get($colors, success), $lightness: -10%);
- *     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ * 354 | @import 'layout/container';
+ *     |         ^^^^^^^^^^^^^^^^^^
  *     '
- *   assets/styles/components/_buttons.scss 116:17  @import
- *   assets/styles/main.scss 346:9                  root stylesheet */
+ *   assets/styles/main.scss 354:9  root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -14,5 +13,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: 'Error: There is no module with the namespace "color".\a     \2577 \a 116 \2502      background: color.adjust(map-get($colors, success), $lightness: -10%);\a     \2502                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a     \2575 \a   assets/styles/components/_buttons.scss 116:17  @import\a   assets/styles/main.scss 346:9                  root stylesheet';
+  content: "Error: Can't find stylesheet to import.\a     \2577 \a 354 \2502  @import 'layout/container';\a     \2502          ^^^^^^^^^^^^^^^^^^\a     \2575 \a   assets/styles/main.scss 354:9  root stylesheet";
 }
