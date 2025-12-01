@@ -1,50 +1,58 @@
-<header class="sticky top-0 z-50 glass-effect border-b border-gray-200 shadow-sm" role="banner">
+<header class="fixed top-0 left-0 right-0 z-50 glass-effect backdrop-blur-xl border-b border-gold/20 transition-all duration-500" role="banner">
   <div class="container-custom">
-    <div class="flex items-center justify-between h-20">
+    <div class="flex items-center justify-between h-24">
       <!-- Logo -->
       <div class="flex-shrink-0">
-        <a href="{{ routes.root_url }}" class="flex items-center space-x-2 group">
-          {% if settings.header_logo_text != blank %}
-            <span class="text-2xl md:text-3xl font-bold text-gray-900 group-hover:text-accent transition-colors">
-              {{ settings.header_logo_text }}
-            </span>
-          {% else %}
-            <span class="text-2xl md:text-3xl font-bold text-gray-900 group-hover:text-accent transition-colors">
-              {{ shop.name }}
-            </span>
-          {% endif %}
+        <a href="{{ routes.root_url }}" class="flex items-center space-x-3 group">
+          <div class="w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-gold group-hover:animate-glow transition-all duration-500">
+            <svg class="w-7 h-7 text-luxury-dark" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <div>
+            {% if settings.header_logo_text != blank %}
+              <span class="text-2xl md:text-3xl font-premium font-bold text-luxury-dark group-hover:text-accent transition-colors">
+                {{ settings.header_logo_text }}
+              </span>
+            {% else %}
+              <span class="text-2xl md:text-3xl font-premium font-bold text-luxury-dark group-hover:text-accent transition-colors">
+                Premium Baklava
+              </span>
+            {% endif %}
+            <div class="text-xs text-accent font-semibold uppercase tracking-widest">Artisan Excellence</div>
+          </div>
         </a>
       </div>
 
       <!-- Navigation -->
-      <nav class="hidden md:flex items-center space-x-8" role="navigation" aria-label="Main">
+      <nav class="hidden lg:flex items-center space-x-10" role="navigation" aria-label="Main">
         {% for link in linklists.main-menu.links %}
-          <a href="{{ link.url }}" class="text-gray-700 hover:text-gray-900 font-medium transition-colors relative group">
+          <a href="{{ link.url }}" class="font-premium text-luxury-dark hover:text-accent font-medium transition-all duration-300 relative group py-2">
             {{ link.title }}
-            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all group-hover:w-full"></span>
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full"></span>
           </a>
         {% endfor %}
       </nav>
 
       <!-- Actions -->
-      <div class="flex items-center space-x-4">
+      <div class="flex items-center space-x-6">
         {% if settings.show_search %}
-          <a href="{{ routes.search_url }}" class="p-2 text-gray-700 hover:text-gray-900 transition-colors" aria-label="Search">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <a href="{{ routes.search_url }}" class="p-3 text-luxury-dark hover:text-accent transition-all duration-300 hover:bg-accent/10 rounded-full" aria-label="Search">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </a>
         {% endif %}
-        
-        <a href="{{ routes.cart_url }}" class="cart-link relative p-2 text-gray-700 hover:text-gray-900 transition-colors" aria-label="Cart">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+        <a href="{{ routes.cart_url }}" class="cart-link relative p-3 text-luxury-dark hover:text-accent transition-all duration-300 hover:bg-accent/10 rounded-full" aria-label="Cart">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
           </svg>
         </a>
 
         <!-- Mobile Menu Button -->
-        <button class="md:hidden p-2 text-gray-700" aria-label="Menu" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button class="lg:hidden p-3 text-luxury-dark hover:text-accent transition-all duration-300 hover:bg-accent/10 rounded-full" aria-label="Menu" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
@@ -52,10 +60,10 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden pb-4 border-t border-gray-200 mt-4">
-      <nav class="flex flex-col space-y-4 pt-4">
+    <div id="mobile-menu" class="hidden lg:hidden pb-6 border-t border-gold/20 mt-6">
+      <nav class="flex flex-col space-y-6 pt-6">
         {% for link in linklists.main-menu.links %}
-          <a href="{{ link.url }}" class="text-gray-700 hover:text-gray-900 font-medium transition-colors">
+          <a href="{{ link.url }}" class="font-premium text-luxury-dark hover:text-accent font-medium transition-all duration-300 text-lg">
             {{ link.title }}
           </a>
         {% endfor %}

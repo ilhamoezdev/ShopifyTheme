@@ -1,25 +1,29 @@
-<div class="section-padding bg-gray-50">
-  <div class="container-custom">
+<div id="collections" class="section-padding bg-beige relative overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 baklava-pattern opacity-10"></div>
+
+  <div class="container-custom relative z-10">
     {% if section.settings.title != blank %}
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+      <div class="text-center mb-20 animate-on-scroll">
+        <h2 class="font-premium text-5xl md:text-6xl text-luxury-dark mb-6">
           {{ section.settings.title }}
         </h2>
         {% if section.settings.description != blank %}
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p class="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
             {{ section.settings.description }}
           </p>
         {% endif %}
+        <div class="premium-divider mt-8"></div>
       </div>
     {% endif %}
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-{{ section.settings.columns_desktop }} gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-{{ section.settings.columns_desktop }} gap-12">
       {% for block in section.blocks limit: section.blocks.size %}
         {% assign collection = collections[block.settings.collection] %}
         {% if collection != blank %}
-          <div class="collection-card" {{ block.shopify_attributes }}>
-            <a href="{{ collection.url }}" class="block h-full">
-              <div class="relative overflow-hidden bg-gray-100 aspect-[4/3] rounded-2xl group">
+          <div class="collection-card animate-on-scroll" {{ block.shopify_attributes }}>
+            <a href="{{ collection.url }}" class="block h-full group">
+              <div class="relative overflow-hidden bg-gradient-to-br from-amber-50 to-yellow-50 aspect-[4/3] rounded-3xl shadow-luxury group-hover:shadow-gold transition-all duration-500">
                 {% if collection.featured_image != blank %}
                   <img
                     srcset="{%- if collection.featured_image.width >= 375 -%}{{ collection.featured_image | image_url: width: 375 }} 375w,{%- endif -%}
@@ -31,28 +35,58 @@
                     loading="lazy"
                     width="{{ collection.featured_image.width }}"
                     height="{{ collection.featured_image.height }}"
-                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   >
                 {% else %}
-                  <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-indigo-500 to-purple-600">
-                    <svg class="w-24 h-24 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                    </svg>
+                  <!-- Premium Collection Placeholder -->
+                  <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-accent/20 to-gold-light/20">
+                    <div class="text-center space-y-4">
+                      <div class="w-20 h-20 mx-auto bg-accent rounded-full flex items-center justify-center shadow-gold">
+                        <svg class="w-10 h-10 text-luxury-dark" fill="currentColor" viewBox="0 0 24 24">
+                          {% case forloop.index %}
+                            {% when 1 %}
+                              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            {% when 2 %}
+                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            {% when 3 %}
+                              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                          {% endcase %}
+                        </svg>
+                      </div>
+                      <div class="font-premium text-xl text-luxury-dark">{{ collection.title }}</div>
+                    </div>
                   </div>
                 {% endif %}
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div class="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                  <div class="flex items-center justify-between">
-                    <h3 class="text-2xl font-bold">{{ collection.title }}</h3>
-                    <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold">
-                      {{ collection.products_count }} {{ 'products' | t }}
+
+                <!-- Luxury Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-luxury-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                <!-- Content Overlay -->
+                <div class="absolute bottom-0 left-0 right-0 p-8 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <div class="flex items-center justify-between mb-3">
+                    <h3 class="font-premium text-2xl font-bold">{{ collection.title }}</h3>
+                    <span class="bg-accent/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold border border-accent/30">
+                      {{ collection.products_count }} Premium Pieces
                     </span>
                   </div>
                   {% if collection.description != blank %}
-                    <p class="text-white/90 mt-2 line-clamp-2 text-sm">
-                      {{ collection.description | strip_html | truncate: 100 }}
+                    <p class="text-white/90 leading-relaxed text-sm">
+                      {{ collection.description | strip_html | truncate: 120 }}
                     </p>
                   {% endif %}
+                  <div class="mt-4 flex items-center space-x-2">
+                    <span class="text-accent font-semibold">Explore Collection</span>
+                    <svg class="w-4 h-4 text-accent group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Decorative Corner -->
+                <div class="absolute top-4 right-4 w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
                 </div>
               </div>
             </a>
@@ -60,12 +94,32 @@
         {% endif %}
       {% endfor %}
     </div>
+
+    <!-- Featured Stats -->
+    <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="animate-on-scroll">
+        <div class="text-4xl font-premium font-bold text-accent mb-2">100+</div>
+        <div class="text-luxury-dark font-medium">Premium Varieties</div>
+      </div>
+      <div class="animate-on-scroll">
+        <div class="text-4xl font-premium font-bold text-accent mb-2">24h</div>
+        <div class="text-luxury-dark font-medium">Fresh Daily</div>
+      </div>
+      <div class="animate-on-scroll">
+        <div class="text-4xl font-premium font-bold text-accent mb-2">5★</div>
+        <div class="text-luxury-dark font-medium">Customer Rating</div>
+      </div>
+      <div class="animate-on-scroll">
+        <div class="text-4xl font-premium font-bold text-accent mb-2">50+</div>
+        <div class="text-luxury-dark font-medium">Countries Served</div>
+      </div>
+    </div>
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "Featured Collections",
+  "name": "Premium Collections",
   "tag": "section",
   "class": "section",
   "settings": [
@@ -73,12 +127,13 @@
       "type": "text",
       "id": "title",
       "label": "Heading",
-      "default": "Shop by Category"
+      "default": "Curated Collections"
     },
     {
       "type": "textarea",
       "id": "description",
-      "label": "Description"
+      "label": "Description",
+      "default": "Discover our meticulously crafted baklava collections, each representing the pinnacle of Ottoman pastry artistry."
     },
     {
       "type": "range",
@@ -105,7 +160,11 @@
   ],
   "presets": [
     {
-      "name": "Featured Collections",
+      "name": "Premium Collections",
+      "settings": {
+        "title": "Curated Collections",
+        "description": "Discover our meticulously crafted baklava collections, each representing the pinnacle of Ottoman pastry artistry."
+      },
       "blocks": [
         {
           "type": "collection"

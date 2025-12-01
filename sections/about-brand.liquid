@@ -1,0 +1,83 @@
+<div class="section-padding bg-cream relative overflow-hidden">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 baklava-pattern opacity-5"></div>
+
+  <div class="container-custom relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <!-- Content -->
+      <div class="space-y-8 animate-on-scroll">
+        <div class="space-y-4">
+          <div class="inline-block px-6 py-2 bg-accent/20 rounded-full text-accent font-semibold text-sm uppercase tracking-widest">
+            Our Heritage
+          </div>
+          <h2 class="font-premium text-5xl md:text-6xl text-luxury-dark leading-tight">
+            A Legacy of<br>
+            <span class="text-accent">Excellence</span>
+          </h2>
+        </div>
+
+        <div class="prose-premium space-y-6">
+          <p>
+            For over a century, our family has been crafting the finest baklava using traditional Ottoman recipes passed down through generations. Each layer tells a story of dedication, precision, and an unwavering commitment to culinary perfection.
+          </p>
+          <p>
+            Our master artisans combine the richest ingredients – from fragrant pistachios sourced from the finest orchards to pure, clarified butter churned using age-old techniques – to create desserts that transcend mere sweets.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-8">
+          <div class="text-center">
+            <div class="text-4xl font-premium font-bold text-accent mb-2">100+</div>
+            <div class="text-luxury-dark font-medium">Years of Tradition</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-premium font-bold text-accent mb-2">50+</div>
+            <div class="text-luxury-dark font-medium">Artisan Recipes</div>
+          </div>
+        </div>
+
+        <a href="#collections" class="btn btn-primary inline-block">
+          Discover Our Collections
+        </a>
+      </div>
+
+      <!-- Artisan Image -->
+      <div class="relative animate-on-scroll">
+        <div class="relative rounded-3xl overflow-hidden shadow-luxury">
+          <div class="aspect-[4/5] bg-gradient-to-br from-amber-100 via-yellow-50 to-orange-100 flex items-center justify-center">
+            <!-- Placeholder Artisan Image -->
+            <div class="text-center space-y-6 p-8">
+              <div class="w-32 h-32 mx-auto bg-gradient-to-br from-accent to-gold-light rounded-full flex items-center justify-center shadow-gold">
+                <svg class="w-16 h-16 text-luxury-dark" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="font-premium text-2xl text-luxury-dark mb-2">Master Artisan</div>
+                <div class="text-accent font-semibold">5th Generation Baklava Maker</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="absolute -top-8 -left-8 w-24 h-24 bg-accent/20 rounded-full blur-xl animate-float"></div>
+        <div class="absolute -bottom-8 -right-8 w-32 h-32 bg-gold-light/20 rounded-full blur-xl animate-float" style="animation-delay: 2s;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About Brand",
+  "tag": "section",
+  "class": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "About Brand"
+    }
+  ]
+}
+{% endschema %}

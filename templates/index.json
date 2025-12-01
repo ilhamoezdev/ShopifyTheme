@@ -3,50 +3,66 @@
     "hero-banner": {
       "type": "hero-banner",
       "settings": {
-        "heading": "Welcome to Our Store",
-        "text": "Discover amazing products and shop with confidence",
-        "button_label": "Shop Now",
-        "button_link": "/collections/all"
+        "heading": "Indulge in\nPremium Baklava\nExcellence",
+        "text": "Experience the finest handcrafted baklava, made with traditional recipes passed down through generations. Each piece tells a story of Ottoman heritage and culinary perfection.",
+        "button_label": "Shop Premium Baklava",
+        "button_link": "/collections/all",
+        "secondary_button_label": "Our Heritage",
+        "secondary_button_link": "#about"
       }
+    },
+    "about-brand": {
+      "type": "about-brand",
+      "settings": {}
     },
     "featured-collections": {
       "type": "featured-collections",
       "settings": {
-        "title": "Shop by Category",
-        "description": "Browse our curated collections",
+        "title": "Curated Collections",
+        "description": "Discover our meticulously crafted baklava collections, each representing the pinnacle of Ottoman pastry artistry.",
         "columns_desktop": 3
       },
       "blocks": {
-        "collection_1": {
-          "type": "collection"
+        "pistachio_collection": {
+          "type": "collection",
+          "settings": {
+            "collection": ""
+          }
         },
-        "collection_2": {
-          "type": "collection"
+        "walnut_collection": {
+          "type": "collection",
+          "settings": {
+            "collection": ""
+          }
         },
-        "collection_3": {
-          "type": "collection"
+        "specialty_collection": {
+          "type": "collection",
+          "settings": {
+            "collection": ""
+          }
         }
       },
       "block_order": [
-        "collection_1",
-        "collection_2",
-        "collection_3"
+        "pistachio_collection",
+        "walnut_collection",
+        "specialty_collection"
       ]
     },
     "featured-products": {
       "type": "featured-products",
       "settings": {
-        "title": "Featured Products",
-        "description": "Handpicked products just for you",
+        "title": "Premium Selections",
+        "description": "Handpicked masterpieces from our artisan collection, crafted with the finest ingredients and traditional techniques.",
         "products_to_show": 8,
         "columns_desktop": 4,
         "show_view_all": true,
-        "view_all_label": "View all products"
+        "view_all_label": "Explore All Premium Baklava"
       }
     }
   },
   "order": [
     "hero-banner",
+    "about-brand",
     "featured-collections",
     "featured-products"
   ]
