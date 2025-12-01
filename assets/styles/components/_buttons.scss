@@ -113,7 +113,7 @@
   border: 2px solid map-get($colors, success);
 
   &:hover {
-    background: darken(map-get($colors, success), 10%);
+    background: color.adjust(map-get($colors, success), $lightness: -10%);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
   }
@@ -126,7 +126,7 @@
   border: 2px solid map-get($colors, error);
 
   &:hover {
-    background: darken(map-get($colors, error), 10%);
+    background: color.adjust(map-get($colors, error), $lightness: -10%);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
   }

@@ -1,10 +1,10 @@
-/* Error: Undefined mixin.
- *    ,
- * 24 |   @include flex-between;
- *    |   ^^^^^^^^^^^^^^^^^^^^^
- *    '
- *   assets/styles/components/_navigation.scss 24:3  @import
- *   assets/styles/main.scss 349:9                   root stylesheet */
+/* Error: There is no module with the namespace "color".
+ *     ,
+ * 116 |     background: color.adjust(map-get($colors, success), $lightness: -10%);
+ *     |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *     '
+ *   assets/styles/components/_buttons.scss 116:17  @import
+ *   assets/styles/main.scss 346:9                  root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -14,5 +14,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: Undefined mixin.\a    \2577 \a 24 \2502    @include flex-between;\a    \2502    ^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   assets/styles/components/_navigation.scss 24:3  @import\a   assets/styles/main.scss 349:9                   root stylesheet";
+  content: 'Error: There is no module with the namespace "color".\a     \2577 \a 116 \2502      background: color.adjust(map-get($colors, success), $lightness: -10%);\a     \2502                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a     \2575 \a   assets/styles/components/_buttons.scss 116:17  @import\a   assets/styles/main.scss 346:9                  root stylesheet';
 }

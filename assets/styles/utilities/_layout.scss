@@ -82,6 +82,25 @@
   justify-content: space-around;
 }
 
+// FLEXBOX MIXINS
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-around {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
 // ASPECT RATIOS
 .aspect-square { aspect-ratio: 1 / 1; }
 .aspect-video { aspect-ratio: 16 / 9; }
