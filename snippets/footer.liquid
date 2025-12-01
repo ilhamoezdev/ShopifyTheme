@@ -1,0 +1,112 @@
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__content">
+      <div class="footer__section">
+        <h3 class="footer__title">{{ shop.name }}</h3>
+        <p class="footer__text">{{ settings.footer_text }}</p>
+      </div>
+
+      <div class="footer__section">
+        <h4 class="footer__heading">Quick Links</h4>
+        <ul class="footer__links">
+          {% for link in linklists.footer.links %}
+            <li>
+              <a href="{{ link.url }}" class="footer__link">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="footer__section">
+        <h4 class="footer__heading">Contact</h4>
+        <p class="footer__text">
+          {% if shop.email != blank %}
+            <a href="mailto:{{ shop.email }}" class="footer__link">{{ shop.email }}</a>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copyright">
+        &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    color: rgba(255, 255, 255, 0.9);
+    padding: var(--spacing-2xl) 0 var(--spacing-lg);
+    margin-top: var(--spacing-2xl);
+  }
+
+  .footer__content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .footer__title {
+    font-size: 2.4rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-secondary);
+  }
+
+  .footer__heading {
+    font-size: 1.8rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-secondary);
+  }
+
+  .footer__text {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .footer__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer__links li {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .footer__link {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 1.4rem;
+    transition: color var(--transition-base);
+  }
+
+  .footer__link:hover {
+    color: var(--color-secondary);
+  }
+
+  .footer__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: var(--spacing-lg);
+    text-align: center;
+  }
+
+  .footer__copyright {
+    font-size: 1.4rem;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  @media screen and (max-width: 749px) {
+    .footer__content {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-lg);
+    }
+  }
+</style>
+

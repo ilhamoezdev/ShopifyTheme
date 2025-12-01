@@ -1,0 +1,57 @@
+{{ 'section-main-collection.css' | asset_url | stylesheet_tag }}
+
+<div class="collection section">
+  <div class="container">
+    <div class="collection__header">
+      <h1 class="collection__title">{{ collection.title }}</h1>
+      {% if collection.description != blank %}
+        <div class="collection__description">
+          {{ collection.description }}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if collection.products_count > 0 %}
+      <div class="collection__grid grid grid--{{ section.settings.columns_desktop }}-col">
+        {% for product in collection.products %}
+          <div class="collection__item">
+            {% render 'product-card', product: product %}
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="collection__empty">
+        <p>No products found in this collection.</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 24,
+      "step": 4,
+      "default": 12,
+      "label": "Products per page"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4,
+      "label": "Number of columns on desktop"
+    }
+  ]
+}
+{% endschema %}
+

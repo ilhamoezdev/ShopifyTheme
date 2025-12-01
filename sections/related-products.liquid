@@ -1,0 +1,61 @@
+{{ 'section-related-products.css' | asset_url | stylesheet_tag }}
+
+{% if recommendations.performed and recommendations.products_count > 0 %}
+  <div class="related-products section">
+    <div class="container">
+      {% if section.settings.title != blank %}
+        <div class="section__header">
+          <h2 class="section__title">{{ section.settings.title }}</h2>
+        </div>
+      {% endif %}
+
+      <div class="related-products__grid grid grid--{{ section.settings.columns_desktop }}-col">
+        {% for product in recommendations.products limit: section.settings.products_to_show %}
+          <div class="related-products__item">
+            {% render 'product-card', product: product %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Related Products",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "You may also like"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4,
+      "label": "Maximum products to show"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 4,
+      "label": "Number of columns on desktop"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Related Products"
+    }
+  ]
+}
+{% endschema %}
+

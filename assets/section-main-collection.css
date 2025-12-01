@@ -1,0 +1,42 @@
+.collection__header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.collection__title {
+  font-size: 4.8rem;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-secondary);
+}
+
+.collection__description {
+  font-size: 1.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 70rem;
+  margin: 0 auto;
+}
+
+.collection__grid {
+  margin-top: var(--spacing-xl);
+}
+
+.collection__item {
+  display: flex;
+}
+
+.collection__empty {
+  text-align: center;
+  padding: var(--spacing-2xl);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius);
+  color: var(--color-text);
+  font-size: 1.8rem;
+}
+
+@media screen and (max-width: 749px) {
+  .collection__title {
+    font-size: 3.2rem;
+  }
+}
+

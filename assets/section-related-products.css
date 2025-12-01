@@ -1,0 +1,8 @@
+.related-products__grid {
+  margin-top: var(--spacing-xl);
+}
+
+.related-products__item {
+  display: flex;
+}
+

@@ -1,0 +1,117 @@
+{{ 'section-featured-collections.css' | asset_url | stylesheet_tag }}
+
+<div class="featured-collections section">
+  <div class="container">
+    {% if section.settings.title != blank %}
+      <div class="section__header">
+        <h2 class="section__title">{{ section.settings.title }}</h2>
+        {% if section.settings.description != blank %}
+          <p class="section__description">{{ section.settings.description }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="featured-collections__grid grid grid--{{ section.settings.columns_desktop }}-col">
+      {% for block in section.blocks limit: section.blocks.size %}
+        {% assign collection = collections[block.settings.collection] %}
+        {% if collection != blank %}
+          <div class="featured-collections__item" {{ block.shopify_attributes }}>
+            <a href="{{ collection.url }}" class="collection-card">
+              <div class="collection-card__image">
+                {% if collection.featured_image != blank %}
+                  <img
+                    srcset="{%- if collection.featured_image.width >= 375 -%}{{ collection.featured_image | image_url: width: 375 }} 375w,{%- endif -%}
+                            {%- if collection.featured_image.width >= 750 -%}{{ collection.featured_image | image_url: width: 750 }} 750w,{%- endif -%}
+                            {{ collection.featured_image | image_url }} {{ collection.featured_image.width }}w"
+                    src="{{ collection.featured_image | image_url: width: 750 }}"
+                    sizes="(min-width: 750px) 750px, 375px"
+                    alt="{{ collection.title | escape }}"
+                    loading="lazy"
+                    width="{{ collection.featured_image.width }}"
+                    height="{{ collection.featured_image.height }}"
+                  >
+                {% else %}
+                  <div class="collection-card__placeholder">
+                    <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect width="100" height="100" fill="#f5f5f5"/>
+                      <path d="M30 40L50 20L70 40H30Z" fill="#ddd"/>
+                    </svg>
+                  </div>
+                {% endif %}
+                <div class="collection-card__overlay">
+                  <span class="collection-card__count">{{ collection.products_count }} {{ 'products' | t }}</span>
+                </div>
+              </div>
+              <div class="collection-card__content">
+                <h3 class="collection-card__title">{{ collection.title }}</h3>
+                {% if collection.description != blank %}
+                  <p class="collection-card__description">{{ collection.description | strip_html | truncate: 100 }}</p>
+                {% endif %}
+              </div>
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured Collections",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Shop by Category"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3,
+      "label": "Number of columns on desktop"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collections",
+      "blocks": [
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        },
+        {
+          "type": "collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+

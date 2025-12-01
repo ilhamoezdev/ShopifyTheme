@@ -1,0 +1,54 @@
+{
+  "sections": {
+    "hero-banner": {
+      "type": "hero-banner",
+      "settings": {
+        "heading": "Welcome to Our Store",
+        "text": "Discover amazing products and shop with confidence",
+        "button_label": "Shop Now",
+        "button_link": "/collections/all"
+      }
+    },
+    "featured-collections": {
+      "type": "featured-collections",
+      "settings": {
+        "title": "Shop by Category",
+        "description": "Browse our curated collections",
+        "columns_desktop": 3
+      },
+      "blocks": {
+        "collection_1": {
+          "type": "collection"
+        },
+        "collection_2": {
+          "type": "collection"
+        },
+        "collection_3": {
+          "type": "collection"
+        }
+      },
+      "block_order": [
+        "collection_1",
+        "collection_2",
+        "collection_3"
+      ]
+    },
+    "featured-products": {
+      "type": "featured-products",
+      "settings": {
+        "title": "Featured Products",
+        "description": "Handpicked products just for you",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "show_view_all": true,
+        "view_all_label": "View all products"
+      }
+    }
+  },
+  "order": [
+    "hero-banner",
+    "featured-collections",
+    "featured-products"
+  ]
+}
+

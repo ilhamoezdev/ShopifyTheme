@@ -1,0 +1,30 @@
+{
+  "general": {
+    "meta": {
+      "tags": "Tagged \"{{ tags }}\"",
+      "page": "Page {{ page }}"
+    }
+  },
+  "accessibility": {
+    "skip_to_text": "Zum Inhalt springen",
+    "refresh_page": "Aktualisieren Sie die Seite, um neue Inhalte zu sehen",
+    "link_messages": {
+      "new_window": "öffnet in einem neuen Fenster"
+    }
+  },
+  "sections": {
+    "cart": {
+      "cart_error": "Es gab ein Problem beim Aktualisieren Ihres Warenkorbs. Bitte versuchen Sie es erneut.",
+      "cart_quantity_error_html": "Sie können nur [quantity] von diesem Artikel in Ihrem Warenkorb haben."
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "In den Warenkorb",
+      "sold_out": "Ausverkauft",
+      "unavailable": "Nicht verfügbar",
+      "value_unavailable": "{{ value }} ist nicht verfügbar"
+    }
+  }
+}
+
