@@ -55,7 +55,7 @@
   }
 
   @media (min-width: map-get($breakpoints, lg)) {
-    width: calc(25% - map-get($spacing, 4.5));
+    width: calc(25% - map-get($spacing, 4));
   }
 }
 
