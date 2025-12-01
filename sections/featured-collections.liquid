@@ -1,92 +1,79 @@
-<div id="collections" class="section-padding bg-beige relative overflow-hidden">
-  <!-- Background Pattern -->
-  <div class="absolute inset-0 baklava-pattern opacity-10"></div>
-
-  <div class="container-custom relative z-10">
+<div id="collections" class="section-padding bg-light position-relative overflow-hidden">
+  <div class="container">
     {% if section.settings.title != blank %}
-      <div class="text-center mb-20 animate-on-scroll">
-        <h2 class="font-premium text-5xl md:text-6xl text-luxury-dark mb-6">
+      <div class="text-center mb-5 animate-fade-in-up">
+        <h2 class="display-4 fw-bold mb-3">
           {{ section.settings.title }}
         </h2>
         {% if section.settings.description != blank %}
-          <p class="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+          <p class="lead text-muted">
             {{ section.settings.description }}
           </p>
         {% endif %}
-        <div class="premium-divider mt-8"></div>
+        <div class="mx-auto mt-4" style="width: 200px; height: 1px; background: linear-gradient(to right, transparent, #d4af37, transparent);"></div>
       </div>
     {% endif %}
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-{{ section.settings.columns_desktop }} gap-12">
+    <div class="row g-4">
       {% for block in section.blocks limit: section.blocks.size %}
         {% assign collection = collections[block.settings.collection] %}
         {% if collection != blank %}
-          <div class="collection-card animate-on-scroll" {{ block.shopify_attributes }}>
-            <a href="{{ collection.url }}" class="block h-full group">
-              <div class="relative overflow-hidden bg-gradient-to-br from-amber-50 to-yellow-50 aspect-[4/3] rounded-3xl shadow-luxury group-hover:shadow-gold transition-all duration-500">
-                {% if collection.featured_image != blank %}
-                  <img
-                    srcset="{%- if collection.featured_image.width >= 375 -%}{{ collection.featured_image | image_url: width: 375 }} 375w,{%- endif -%}
-                            {%- if collection.featured_image.width >= 750 -%}{{ collection.featured_image | image_url: width: 750 }} 750w,{%- endif -%}
-                            {{ collection.featured_image | image_url }} {{ collection.featured_image.width }}w"
-                    src="{{ collection.featured_image | image_url: width: 750 }}"
-                    sizes="(min-width: 750px) 750px, 375px"
-                    alt="{{ collection.title | escape }}"
-                    loading="lazy"
-                    width="{{ collection.featured_image.width }}"
-                    height="{{ collection.featured_image.height }}"
-                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  >
-                {% else %}
-                  <!-- Premium Collection Placeholder -->
-                  <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-accent/20 to-gold-light/20">
-                    <div class="text-center space-y-4">
-                      <div class="w-20 h-20 mx-auto bg-accent rounded-full flex items-center justify-center shadow-gold">
-                        <svg class="w-10 h-10 text-luxury-dark" fill="currentColor" viewBox="0 0 24 24">
-                          {% case forloop.index %}
-                            {% when 1 %}
-                              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                            {% when 2 %}
-                              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                            {% when 3 %}
-                              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                          {% endcase %}
-                        </svg>
+          <div class="col-md-6 col-lg-{{ 12 | divided_by: section.settings.columns_desktop }} animate-fade-in-up" {{ block.shopify_attributes }}>
+            <a href="{{ collection.url }}" class="text-decoration-none">
+              <div class="card collection-card h-100 position-relative overflow-hidden">
+                <div class="position-relative" style="aspect-ratio: 4/3; overflow: hidden;">
+                  {% if collection.featured_image != blank %}
+                    <img
+                      srcset="{%- if collection.featured_image.width >= 375 -%}{{ collection.featured_image | image_url: width: 375 }} 375w,{%- endif -%}
+                              {%- if collection.featured_image.width >= 750 -%}{{ collection.featured_image | image_url: width: 750 }} 750w,{%- endif -%}
+                              {{ collection.featured_image | image_url }} {{ collection.featured_image.width }}w"
+                      src="{{ collection.featured_image | image_url: width: 750 }}"
+                      sizes="(min-width: 750px) 750px, 375px"
+                      alt="{{ collection.title | escape }}"
+                      loading="lazy"
+                      width="{{ collection.featured_image.width }}"
+                      height="{{ collection.featured_image.height }}"
+                      class="card-img-top w-100 h-100 object-fit-cover"
+                      style="transition: transform 0.5s ease;"
+                    >
+                  {% else %}
+                    <div class="w-100 h-100 d-flex align-items-center justify-content-center bg-gradient" style="background: linear-gradient(135deg, #d4af37 0%, #f4e87c 100%);">
+                      <div class="text-center">
+                        <div class="bg-white opacity-50 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 96px; height: 96px;">
+                          <svg width="48" height="48" fill="currentColor" viewBox="0 0 24 24" class="text-dark">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                          </svg>
+                        </div>
+                        <div class="fw-bold text-white">{{ collection.title }}</div>
                       </div>
-                      <div class="font-premium text-xl text-luxury-dark">{{ collection.title }}</div>
+                    </div>
+                  {% endif %}
+
+                  <!-- Luxury Overlay -->
+                  <div class="position-absolute bottom-0 start-0 end-0 p-4 text-white" style="background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.7) 50%, transparent 100%); transform: translateY(100%); transition: transform 0.5s ease;">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                      <h3 class="h4 fw-bold mb-0">{{ collection.title }}</h3>
+                      <span class="badge bg-accent text-dark">{{ collection.products_count }} Premium Pieces</span>
+                    </div>
+                    {% if collection.description != blank %}
+                      <p class="small mb-0 text-white-50" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                        {{ collection.description | strip_html | truncate: 120 }}
+                      </p>
+                    {% endif %}
+                    <div class="d-flex align-items-center gap-2 mt-3">
+                      <span class="text-accent fw-semibold small">Explore Collection</span>
+                      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" class="text-accent">
+                        <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                      </svg>
                     </div>
                   </div>
-                {% endif %}
 
-                <!-- Luxury Overlay -->
-                <div class="absolute inset-0 bg-gradient-to-t from-luxury-dark/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                <!-- Content Overlay -->
-                <div class="absolute bottom-0 left-0 right-0 p-8 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <div class="flex items-center justify-between mb-3">
-                    <h3 class="font-premium text-2xl font-bold">{{ collection.title }}</h3>
-                    <span class="bg-accent/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold border border-accent/30">
-                      {{ collection.products_count }} Premium Pieces
-                    </span>
-                  </div>
-                  {% if collection.description != blank %}
-                    <p class="text-white/90 leading-relaxed text-sm">
-                      {{ collection.description | strip_html | truncate: 120 }}
-                    </p>
-                  {% endif %}
-                  <div class="mt-4 flex items-center space-x-2">
-                    <span class="text-accent font-semibold">Explore Collection</span>
-                    <svg class="w-4 h-4 text-accent group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  <!-- Decorative Corner -->
+                  <div class="position-absolute top-0 end-0 m-3 bg-accent opacity-20 rounded-circle d-flex align-items-center justify-content-center collection-card-hover" style="width: 48px; height: 48px; opacity: 0; transition: opacity 0.3s;">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" class="text-accent">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                     </svg>
                   </div>
-                </div>
-
-                <!-- Decorative Corner -->
-                <div class="absolute top-4 right-4 w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <svg class="w-6 h-6 text-accent" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
                 </div>
               </div>
             </a>
@@ -96,26 +83,40 @@
     </div>
 
     <!-- Featured Stats -->
-    <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-      <div class="animate-on-scroll">
-        <div class="text-4xl font-premium font-bold text-accent mb-2">100+</div>
-        <div class="text-luxury-dark font-medium">Premium Varieties</div>
+    <div class="row g-4 mt-5 text-center">
+      <div class="col-6 col-md-3 animate-fade-in-up">
+        <div class="display-6 fw-bold text-accent mb-2">100+</div>
+        <div class="text-muted fw-medium">Premium Varieties</div>
       </div>
-      <div class="animate-on-scroll">
-        <div class="text-4xl font-premium font-bold text-accent mb-2">24h</div>
-        <div class="text-luxury-dark font-medium">Fresh Daily</div>
+      <div class="col-6 col-md-3 animate-fade-in-up" style="animation-delay: 0.1s;">
+        <div class="display-6 fw-bold text-accent mb-2">24h</div>
+        <div class="text-muted fw-medium">Fresh Daily</div>
       </div>
-      <div class="animate-on-scroll">
-        <div class="text-4xl font-premium font-bold text-accent mb-2">5★</div>
-        <div class="text-luxury-dark font-medium">Customer Rating</div>
+      <div class="col-6 col-md-3 animate-fade-in-up" style="animation-delay: 0.2s;">
+        <div class="display-6 fw-bold text-accent mb-2">5★</div>
+        <div class="text-muted fw-medium">Customer Rating</div>
       </div>
-      <div class="animate-on-scroll">
-        <div class="text-4xl font-premium font-bold text-accent mb-2">50+</div>
-        <div class="text-luxury-dark font-medium">Countries Served</div>
+      <div class="col-6 col-md-3 animate-fade-in-up" style="animation-delay: 0.3s;">
+        <div class="display-6 fw-bold text-accent mb-2">50+</div>
+        <div class="text-muted fw-medium">Countries Served</div>
       </div>
     </div>
   </div>
 </div>
+
+<style>
+.collection-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.collection-card:hover .position-absolute[style*="translateY(100%)"] {
+  transform: translateY(0) !important;
+}
+
+.collection-card:hover .collection-card-hover {
+  opacity: 1 !important;
+}
+</style>
 
 {% schema %}
 {

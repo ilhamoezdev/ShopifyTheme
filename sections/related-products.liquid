@@ -1,17 +1,17 @@
-{{ 'section-related-products.css' | asset_url | stylesheet_tag }}
-
 {% if recommendations.performed and recommendations.products_count > 0 %}
-  <div class="related-products section">
+  <div class="section-padding bg-light">
     <div class="container">
       {% if section.settings.title != blank %}
-        <div class="section__header">
-          <h2 class="section__title">{{ section.settings.title }}</h2>
+        <div class="text-center mb-5">
+          <h2 class="display-5 fw-bold mb-3">
+            {{ section.settings.title }}
+          </h2>
         </div>
       {% endif %}
 
-      <div class="related-products__grid grid grid--{{ section.settings.columns_desktop }}-col">
+      <div class="row g-4">
         {% for product in recommendations.products limit: section.settings.products_to_show %}
-          <div class="related-products__item">
+          <div class="col-6 col-md-4 col-lg-{{ 12 | divided_by: section.settings.columns_desktop }}">
             {% render 'product-card', product: product %}
           </div>
         {% endfor %}
@@ -58,4 +58,3 @@
   ]
 }
 {% endschema %}
-
