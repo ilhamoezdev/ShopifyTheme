@@ -1,27 +1,26 @@
 {
-  "name": "modern-shopify-theme",
+  "name": "premium-baklava-theme",
   "version": "1.0.0",
-  "description": "Modern Shopify Theme with Tailwind CSS and React",
+  "description": "Premium High-End Baklava Theme with Modern CSS and React",
   "scripts": {
-    "build": "tailwindcss -i ./assets/input.css -o ./assets/base.css --minify",
-    "watch": "tailwindcss -i ./assets/input.css -o ./assets/base.css --watch",
+    "build": "sass assets/styles/main.scss assets/base.css --style=compressed",
+    "watch": "sass --watch assets/styles/main.scss assets/base.css",
     "build:react": "webpack --mode production",
-    "watch:react": "webpack --mode development --watch"
+    "watch:react": "webpack --mode development --watch",
+    "build:all": "npm run build && npm run build:react",
+    "dev": "npm run watch & npm run watch:react"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.1",
-    "autoprefixer": "^10.4.17",
-    "postcss": "^8.4.33",
-    "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4",
-    "babel-loader": "^9.1.3",
     "@babel/core": "^7.23.7",
     "@babel/preset-env": "^7.23.7",
-    "@babel/preset-react": "^7.23.5"
+    "@babel/preset-react": "^7.23.5",
+    "babel-loader": "^9.1.3",
+    "sass": "^1.94.2",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
 }
-

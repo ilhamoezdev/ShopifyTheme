@@ -1,0 +1,149 @@
+// VISUAL EFFECTS
+// ===============
+
+// BACKDROP BLUR
+.backdrop-blur-sm { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
+.backdrop-blur-md { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.backdrop-blur-lg { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+
+// TRANSFORMS
+.scale-95 { transform: scale(0.95); }
+.scale-100 { transform: scale(1); }
+.scale-105 { transform: scale(1.05); }
+.scale-110 { transform: scale(1.1); }
+
+.translate-y-0 { transform: translateY(0); }
+.translate-y-2 { transform: translateY(0.5rem); }
+.translate-y-4 { transform: translateY(1rem); }
+.-translate-y-2 { transform: translateY(-0.5rem); }
+.-translate-y-4 { transform: translateY(-1rem); }
+
+.rotate-0 { transform: rotate(0deg); }
+.rotate-1 { transform: rotate(1deg); }
+.rotate-2 { transform: rotate(2deg); }
+.rotate-3 { transform: rotate(3deg); }
+.-rotate-1 { transform: rotate(-1deg); }
+.-rotate-2 { transform: rotate(-2deg); }
+.-rotate-3 { transform: rotate(-3deg); }
+
+// TRANSITIONS
+.transition-all { transition: all map-get($transitions, normal); }
+.transition-colors { transition: color map-get($transitions, normal), background-color map-get($transitions, normal), border-color map-get($transitions, normal); }
+.transition-transform { transition: transform map-get($transitions, normal); }
+.transition-opacity { transition: opacity map-get($transitions, normal); }
+
+// FOCUS STYLES
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+}
+
+// LOADING STATES
+.loading {
+  opacity: 0.6;
+  pointer-events: none;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid map-get($colors, accent);
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// HOVER EFFECTS
+.hover-lift {
+  transition: transform map-get($transitions, normal), box-shadow map-get($transitions, normal);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: map-get($shadows, luxury);
+  }
+}
+
+.hover-glow {
+  transition: box-shadow map-get($transitions, normal);
+
+  &:hover {
+    box-shadow: map-get($shadows, gold);
+  }
+}
+
+.hover-scale {
+  transition: transform map-get($transitions, normal);
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+// TEXT EFFECTS
+.text-shadow-sm {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-md {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.text-shadow-lg {
+  text-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px map-get($colors, accent-glow);
+}
+
+// BORDER EFFECTS
+.border-gradient {
+  position: relative;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(45deg, map-get($colors, accent), map-get($colors, accent-light)) border-box;
+  border: 2px solid transparent;
+  border-radius: map-get($border-radius, xl);
+}
+
+// MASKING
+.mask-circle {
+  -webkit-mask-image: radial-gradient(circle, black 50%, transparent 50%);
+  mask-image: radial-gradient(circle, black 50%, transparent 50%);
+}
+
+// CLIP PATHS
+.clip-triangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.clip-hexagon {
+  clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
+}
+
+// SCROLL EFFECTS
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+// VISIBILITY
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,49 @@
+// COLOR UTILITIES
+// ================
+
+@each $key, $value in $colors {
+  .text-#{$key} {
+    color: $value;
+  }
+
+  .bg-#{$key} {
+    background-color: $value;
+  }
+
+  .border-#{$key} {
+    border-color: $value;
+  }
+
+  .hover\\:text-#{$key}:hover {
+    color: $value;
+  }
+
+  .hover\\:bg-#{$key}:hover {
+    background-color: $value;
+  }
+
+  .hover\\:border-#{$key}:hover {
+    border-color: $value;
+  }
+}
+
+// GRADIENT BACKGROUNDS
+.bg-luxury-gradient {
+  @include luxury-gradient;
+}
+
+.bg-gold-gradient {
+  @include gold-gradient;
+}
+
+// GLASS EFFECTS
+.glass-effect {
+  @include glass-effect;
+}
+
+// OPACITY UTILITIES
+.opacity-0 { opacity: 0; }
+.opacity-25 { opacity: 0.25; }
+.opacity-50 { opacity: 0.5; }
+.opacity-75 { opacity: 0.75; }
+.opacity-100 { opacity: 1; }
