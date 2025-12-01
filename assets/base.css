@@ -1,9 +1,10 @@
-/* Error: expected ":".
- *     ,
- * 111 |   md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06),
- *     |                                                                            ^
- *     '
- *   assets/styles/main.scss 111:76  root stylesheet */
+/* Error: Undefined mixin.
+ *    ,
+ * 24 |   @include flex-between;
+ *    |   ^^^^^^^^^^^^^^^^^^^^^
+ *    '
+ *   assets/styles/components/_navigation.scss 24:3  @import
+ *   assets/styles/main.scss 349:9                   root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -13,5 +14,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: 'Error: expected ":".\a     \2577 \a 111 \2502    md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06),\a     \2502                                                                             ^\a     \2575 \a   assets/styles/main.scss 111:76  root stylesheet';
+  content: "Error: Undefined mixin.\a    \2577 \a 24 \2502    @include flex-between;\a    \2502    ^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   assets/styles/components/_navigation.scss 24:3  @import\a   assets/styles/main.scss 349:9                   root stylesheet";
 }
