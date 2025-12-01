@@ -1,9 +1,10 @@
-/* Error: Can't find stylesheet to import.
- *     ,
- * 354 | @import 'layout/container';
- *     |         ^^^^^^^^^^^^^^^^^^
- *     '
- *   assets/styles/main.scss 354:9  root stylesheet */
+/* Error: Value null can't be used in a calculation.
+ *    ,
+ * 58 |     width: calc(25% - map-get($spacing, 4.5));
+ *    |                       ^^^^^^^^^^^^^^^^^^^^^^
+ *    '
+ *   assets/styles/layout/_grid.scss 58:23  @import
+ *   assets/styles/main.scss 355:9          root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
@@ -13,5 +14,5 @@ body::before {
   padding: 1em;
   margin-bottom: 1em;
   border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a     \2577 \a 354 \2502  @import 'layout/container';\a     \2502          ^^^^^^^^^^^^^^^^^^\a     \2575 \a   assets/styles/main.scss 354:9  root stylesheet";
+  content: "Error: Value null can't be used in a calculation.\a    \2577 \a 58 \2502      width: calc(25% - map-get($spacing, 4.5));\a    \2502                        ^^^^^^^^^^^^^^^^^^^^^^\a    \2575 \a   assets/styles/layout/_grid.scss 58:23  @import\a   assets/styles/main.scss 355:9          root stylesheet";
 }
